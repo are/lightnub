@@ -1,4 +1,4 @@
-import type { Instance, Job, Plugin } from '@lightnub/plugin'
+import type { Instance, Job, Plugin } from '@lightnub/core'
 import { version } from '../package.json'
 
 type HttpModule = {}

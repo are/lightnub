@@ -16,6 +16,7 @@ export default {
     {
       file: `dist/${packageName}.cjs.js`,
       format: 'cjs',
+      exports: 'default',
     },
     {
       file: `dist/${packageName}.esm.js`,
@@ -27,5 +28,5 @@ export default {
       format: 'umd',
     },
   ],
-  plugins: [json(), resolve(), commonjs(), typescript({ tsconfig: `${LERNA_ROOT_PATH}/tsconfig.json` })],
+  plugins: [json(), resolve(), commonjs(), typescript({ tsconfig: `${LERNA_ROOT_PATH}/tsconfig.json` }), terser()],
 }

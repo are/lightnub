@@ -1,4 +1,4 @@
-import type { Instance, Plugin, Keyset, Job } from '@lightnub/plugin'
+import type { Instance, Plugin, Keyset, Job } from '@lightnub/core'
 import { version } from '../package.json'
 
 type PublishOptions = {
