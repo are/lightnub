@@ -10,6 +10,10 @@
       function LightNub(plugins) {
           this.__jobCounter = 0;
           this.__plugins = plugins;
+          for (var _i = 0, _a = this.__plugins; _i < _a.length; _i++) {
+              var plugin = _a[_i];
+              plugin.initialize(this);
+          }
       }
       LightNub.prototype.__jobCreatedHook = function (job) {
           for (var _i = 0, _a = this.__plugins; _i < _a.length; _i++) {

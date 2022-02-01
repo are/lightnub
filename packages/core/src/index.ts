@@ -29,6 +29,10 @@ export default class LightNub implements Instance {
 
   constructor(plugins: Plugin[]) {
     this.__plugins = plugins
+
+    for (const plugin of this.__plugins) {
+      plugin.initialize(this)
+    }
   }
 
   __decorate(name: string, fn: Function) {
