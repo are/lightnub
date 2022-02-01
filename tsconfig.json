@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "@lightnub/*": ["./packages/*/src/index.ts"]
+    }
+  },
+  "include": ["packages/**/*.ts"]
+}

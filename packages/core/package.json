@@ -1,0 +1,16 @@
+{
+  "name": "@lightnub/core",
+  "version": "1.0.0",
+  "description": "A lightweight alternative to PubNub JavaScript SDK specifically created for IoT devices",
+  "author": "Artur Wojciechowski <me@iama.re>",
+  "license": "MIT",
+  "main": "dist/core.cjs.js",
+  "module": "dist/core.esm.js",
+  "browser": "dist/core.umd.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "@lightnub/plugin-espruino-networking",
+  "version": "1.0.0",
+  "description": "LightNub networking plugin for Espruino boards",
+  "author": "Artur Wojciechowski <me@iama.re>",
+  "license": "MIT",
+  "main": "dist/plugin-espruino-networking.cjs.js",
+  "module": "dist/plugin-espruino-networking.esm.js",
+  "browser": "dist/plugin-espruino-networking.umd.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
