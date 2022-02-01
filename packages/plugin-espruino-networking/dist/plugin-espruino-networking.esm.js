@@ -16,4 +16,4 @@ var EspruinoNetworkingPlugin = /** @class */ (function () {
     return EspruinoNetworkingPlugin;
 }());
 
-export { EspruinoNetworkingPlugin };
+export { EspruinoNetworkingPlugin as default };

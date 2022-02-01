@@ -9,7 +9,7 @@ type PublishOptions = {
 
 type PublishResult = {}
 
-export class PubSubDxPlugin implements Plugin {
+export default class PubSubDxPlugin implements Plugin {
   readonly name = 'pubsub-dx'
   readonly version = version
   readonly priority = 'normal'

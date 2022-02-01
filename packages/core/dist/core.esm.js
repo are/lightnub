@@ -44,4 +44,4 @@ var LightNub = /** @class */ (function () {
     return LightNub;
 }());
 
-export { LightNub };
+export { LightNub as default };

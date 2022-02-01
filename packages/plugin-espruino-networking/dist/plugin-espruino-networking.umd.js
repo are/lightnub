@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global["plugin-espruino-networking"] = {}));
-})(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global["plugin-espruino-networking"] = factory());
+})(this, (function () { 'use strict';
 
   var version = "1.0.0";
 
@@ -22,8 +22,6 @@
       return EspruinoNetworkingPlugin;
   }());
 
-  exports.EspruinoNetworkingPlugin = EspruinoNetworkingPlugin;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
+  return EspruinoNetworkingPlugin;
 
 }));

@@ -36,4 +36,4 @@ var PubSubDxPlugin = /** @class */ (function () {
     return PubSubDxPlugin;
 }());
 
-export { PubSubDxPlugin };
+export { PubSubDxPlugin as default };

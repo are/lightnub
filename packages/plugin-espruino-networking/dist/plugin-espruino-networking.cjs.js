@@ -1,7 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var version = "1.0.0";
 
 var EspruinoNetworkingPlugin = /** @class */ (function () {
@@ -20,4 +18,4 @@ var EspruinoNetworkingPlugin = /** @class */ (function () {
     return EspruinoNetworkingPlugin;
 }());
 
-exports.EspruinoNetworkingPlugin = EspruinoNetworkingPlugin;
+module.exports = EspruinoNetworkingPlugin;

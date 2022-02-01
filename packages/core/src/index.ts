@@ -2,7 +2,7 @@ import { Plugin, Instance, Job } from '@lightnub/plugin'
 
 import { version } from '../package.json'
 
-export class LightNub implements Instance {
+export default class LightNub implements Instance {
   [key: string]: any
 
   static __version: string = version

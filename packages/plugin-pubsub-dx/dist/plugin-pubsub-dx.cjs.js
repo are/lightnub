@@ -1,7 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var version = "1.0.0";
 
 var PubSubDxPlugin = /** @class */ (function () {
@@ -40,4 +38,4 @@ var PubSubDxPlugin = /** @class */ (function () {
     return PubSubDxPlugin;
 }());
 
-exports.PubSubDxPlugin = PubSubDxPlugin;
+module.exports = PubSubDxPlugin;

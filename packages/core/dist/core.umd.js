@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.core = {}));
-})(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.core = factory());
+})(this, (function () { 'use strict';
 
   var version = "1.0.0";
 
@@ -50,8 +50,6 @@
       return LightNub;
   }());
 
-  exports.LightNub = LightNub;
-
-  Object.defineProperty(exports, '__esModule', { value: true });
+  return LightNub;
 
 }));

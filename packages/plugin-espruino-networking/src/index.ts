@@ -3,7 +3,7 @@ import { version } from '../package.json'
 
 type HttpModule = {}
 
-export class EspruinoNetworkingPlugin implements Plugin {
+export default class EspruinoNetworkingPlugin implements Plugin {
   readonly name = 'espruino-networking'
   readonly version = version
   readonly priority = 'normal'

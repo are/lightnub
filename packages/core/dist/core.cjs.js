@@ -1,7 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var version = "1.0.0";
 
 var LightNub = /** @class */ (function () {
@@ -48,4 +46,4 @@ var LightNub = /** @class */ (function () {
     return LightNub;
 }());
 
-exports.LightNub = LightNub;
+module.exports = LightNub;
