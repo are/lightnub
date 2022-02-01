@@ -22,9 +22,9 @@
                   keyset: keyset,
                   data: {
                       channel: channel,
-                      message: message,
+                      message: message
                   },
-                  callback: callback,
+                  callback: callback
               });
           });
       };
@@ -35,7 +35,7 @@
               job.data = {
                   url: url,
                   method: 'GET',
-                  headers: {},
+                  headers: {}
               };
           }
       };

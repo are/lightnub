@@ -19,6 +19,7 @@ export default class EspruinoNetworkingPlugin implements Plugin {
   onJobFinished(_job: Job<any, any>): void {}
 
   onJobStarted(job: Job): void {
-    console.log(job)
+    job.isDone = true
+    job.callback(undefined, true)
   }
 }

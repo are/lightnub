@@ -40,7 +40,7 @@ var LightNub = /** @class */ (function () {
             callback: callback,
             keyset: keyset,
             operation: operation,
-            isDone: false,
+            isDone: false
         };
         this.__jobCreatedHook(job);
         this.__jobStartedHook(job);

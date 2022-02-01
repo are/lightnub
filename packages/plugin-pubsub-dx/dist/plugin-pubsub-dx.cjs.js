@@ -18,9 +18,9 @@ var PubSubDxPlugin = /** @class */ (function () {
                 keyset: keyset,
                 data: {
                     channel: channel,
-                    message: message,
+                    message: message
                 },
-                callback: callback,
+                callback: callback
             });
         });
     };
@@ -31,7 +31,7 @@ var PubSubDxPlugin = /** @class */ (function () {
             job.data = {
                 url: url,
                 method: 'GET',
-                headers: {},
+                headers: {}
             };
         }
     };

@@ -11,7 +11,8 @@ var EspruinoNetworkingPlugin = /** @class */ (function () {
     EspruinoNetworkingPlugin.prototype.onJobCreated = function (_job) { };
     EspruinoNetworkingPlugin.prototype.onJobFinished = function (_job) { };
     EspruinoNetworkingPlugin.prototype.onJobStarted = function (job) {
-        console.log(job);
+        job.isDone = true;
+        job.callback(undefined, true);
     };
     return EspruinoNetworkingPlugin;
 }());
