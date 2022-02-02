@@ -1,0 +1,16 @@
+{
+  "name": "@lightnub/module-default-codecs",
+  "version": "1.0.0",
+  "description": "LightNub codec plugin for ES5 JavaScript environments",
+  "author": "Artur Wojciechowski <me@iama.re>",
+  "license": "MIT",
+  "main": "dist/module-default-codecs.cjs.js",
+  "module": "dist/module-default-codecs.esm.js",
+  "browser": "dist/module-default-codecs.umd.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

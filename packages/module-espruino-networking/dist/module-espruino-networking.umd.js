@@ -1,10 +1,5 @@
-(function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-    typeof define === 'function' && define.amd ? define(factory) :
-    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global["module-espruino-networking"] = factory());
-})(this, (function () { 'use strict';
-
-    /*! *****************************************************************************
+!function(t,n){"object"==typeof exports&&"undefined"!=typeof module?module.exports=n():"function"==typeof define&&define.amd?define(n):(t="undefined"!=typeof globalThis?globalThis:t||self)["module-espruino-networking"]=n()}(this,(function(){"use strict";
+/*! *****************************************************************************
     Copyright (c) Microsoft Corporation.
 
     Permission to use, copy, modify, and/or distribute this software for any
@@ -17,84 +12,4 @@
     LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
     OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
     PERFORMANCE OF THIS SOFTWARE.
-    ***************************************************************************** */
-    /* global Reflect, Promise */
-
-    var extendStatics = function(d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-
-    function __extends(d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    }
-
-    var version = "1.0.0";
-
-    var EspruinoNetworking = /** @class */ (function () {
-        function EspruinoNetworking(httpModule) {
-            this.version = version;
-            this.name = 'espruino-networking';
-            this.type = 'networking';
-            this.httpModule = httpModule;
-        }
-        EspruinoNetworking.prototype.get = function () {
-            return this;
-        };
-        EspruinoNetworking.prototype.request = function (request) {
-            var _this = this;
-            return new Promise(function (resolve, reject) {
-                var req = _this.httpModule.request({
-                    host: 'ps.pndsn.com',
-                    method: request.method.toUpperCase(),
-                    path: request.path,
-                    headers: request.headers,
-                }, function (res) {
-                    var result = '';
-                    res.on('data', function (data) {
-                        result += data;
-                    });
-                    res.on('close', function () {
-                        resolve({ status: res.statusCode, body: result, headers: res.headers });
-                    });
-                });
-                req.on('error', function (error) {
-                    reject(error);
-                });
-                if (request.body) {
-                    req.end(request.body);
-                }
-                else {
-                    req.end();
-                }
-            });
-        };
-        return EspruinoNetworking;
-    }());
-    var index = (function (httpModule) {
-        return function WithEspruinoNetworking(klazz) {
-            return /** @class */ (function (_super) {
-                __extends(WithEspruinoNetworking, _super);
-                function WithEspruinoNetworking() {
-                    var args = [];
-                    for (var _i = 0; _i < arguments.length; _i++) {
-                        args[_i] = arguments[_i];
-                    }
-                    var _this = _super.apply(this, args) || this;
-                    _this.registerModule(new EspruinoNetworking(httpModule));
-                    return _this;
-                }
-                return WithEspruinoNetworking;
-            }(klazz));
-        };
-    });
-
-    return index;
-
-}));
+    ***************************************************************************** */var t=function(n,e){return t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,n){t.__proto__=n}||function(t,n){for(var e in n)Object.prototype.hasOwnProperty.call(n,e)&&(t[e]=n[e])},t(n,e)};var n=function(){function t(t){this.version="1.0.0",this.name="espruino-networking",this.type="networking",this.httpModule=t}return t.prototype.get=function(){return this},t.prototype.request=function(t){var n=this;return new Promise((function(e,o){var r=n.httpModule.request({host:"ps.pndsn.com",method:t.method.toUpperCase(),path:t.path,headers:t.headers},(function(t){var n="";t.on("data",(function(t){n+=t})),t.on("close",(function(){e({status:t.statusCode,body:n,headers:t.headers})}))}));r.on("error",(function(t){o(t)})),t.body?r.end(t.body):r.end()}))},t}();return function(e){return function(o){return function(o){function r(){for(var t=[],r=0;r<arguments.length;r++)t[r]=arguments[r];var i=o.apply(this,t)||this;return i.registerModule(new n(e)),i}return function(n,e){if("function"!=typeof e&&null!==e)throw new TypeError("Class extends value "+String(e)+" is not a constructor or null");function o(){this.constructor=n}t(n,e),n.prototype=null===e?Object.create(e):(o.prototype=e.prototype,new o)}(r,o),r}(o)}}}));

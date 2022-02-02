@@ -1,5 +1,4 @@
-'use strict';
-
+"use strict";
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -13,82 +12,4 @@ INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
 LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
 OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics = function(d, b) {
-    extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-    return extendStatics(d, b);
-};
-
-function __extends(d, b) {
-    if (typeof b !== "function" && b !== null)
-        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-    extendStatics(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
-
-var version = "1.0.0";
-
-var EspruinoNetworking = /** @class */ (function () {
-    function EspruinoNetworking(httpModule) {
-        this.version = version;
-        this.name = 'espruino-networking';
-        this.type = 'networking';
-        this.httpModule = httpModule;
-    }
-    EspruinoNetworking.prototype.get = function () {
-        return this;
-    };
-    EspruinoNetworking.prototype.request = function (request) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var req = _this.httpModule.request({
-                host: 'ps.pndsn.com',
-                method: request.method.toUpperCase(),
-                path: request.path,
-                headers: request.headers,
-            }, function (res) {
-                var result = '';
-                res.on('data', function (data) {
-                    result += data;
-                });
-                res.on('close', function () {
-                    resolve({ status: res.statusCode, body: result, headers: res.headers });
-                });
-            });
-            req.on('error', function (error) {
-                reject(error);
-            });
-            if (request.body) {
-                req.end(request.body);
-            }
-            else {
-                req.end();
-            }
-        });
-    };
-    return EspruinoNetworking;
-}());
-var index = (function (httpModule) {
-    return function WithEspruinoNetworking(klazz) {
-        return /** @class */ (function (_super) {
-            __extends(WithEspruinoNetworking, _super);
-            function WithEspruinoNetworking() {
-                var args = [];
-                for (var _i = 0; _i < arguments.length; _i++) {
-                    args[_i] = arguments[_i];
-                }
-                var _this = _super.apply(this, args) || this;
-                _this.registerModule(new EspruinoNetworking(httpModule));
-                return _this;
-            }
-            return WithEspruinoNetworking;
-        }(klazz));
-    };
-});
-
-module.exports = index;
+***************************************************************************** */var t=function(n,o){return t=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,n){t.__proto__=n}||function(t,n){for(var o in n)Object.prototype.hasOwnProperty.call(n,o)&&(t[o]=n[o])},t(n,o)};var n=function(){function t(t){this.version="1.0.0",this.name="espruino-networking",this.type="networking",this.httpModule=t}return t.prototype.get=function(){return this},t.prototype.request=function(t){var n=this;return new Promise((function(o,e){var r=n.httpModule.request({host:"ps.pndsn.com",method:t.method.toUpperCase(),path:t.path,headers:t.headers},(function(t){var n="";t.on("data",(function(t){n+=t})),t.on("close",(function(){o({status:t.statusCode,body:n,headers:t.headers})}))}));r.on("error",(function(t){e(t)})),t.body?r.end(t.body):r.end()}))},t}();module.exports=function(o){return function(e){return function(e){function r(){for(var t=[],r=0;r<arguments.length;r++)t[r]=arguments[r];var u=e.apply(this,t)||this;return u.registerModule(new n(o)),u}return function(n,o){if("function"!=typeof o&&null!==o)throw new TypeError("Class extends value "+String(o)+" is not a constructor or null");function e(){this.constructor=n}t(n,o),n.prototype=null===o?Object.create(o):(e.prototype=o.prototype,new e)}(r,e),r}(e)}};
