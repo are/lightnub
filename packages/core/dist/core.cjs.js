@@ -78,7 +78,7 @@ function LightNub() {
         decorators[_i] = arguments[_i];
     }
     // @ts-ignore
-    return new decorators.reduceRight(function (klass, decorator) { return decorator(klass); }, Core)();
+    return new (decorators.reduceRight(function (klass, decorator) { return decorator(klass); }, Core))();
 }
 LightNub.Core = Core;
 
