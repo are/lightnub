@@ -48,7 +48,7 @@ export type { Core }
 // @ts-ignore
 export default function LightNub(...decorators) {
   // @ts-ignore
-  return new (decorators.reduceRight((klass, decorator) => decorator(klass), Core))()
+  return new (decorators.reduce((klass, decorator) => decorator(klass), Core))()
 }
 
 LightNub.Core = Core
