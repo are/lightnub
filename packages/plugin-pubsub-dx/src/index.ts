@@ -41,14 +41,15 @@ export default class PubSubDxPlugin implements Plugin {
   onJobCreated(job: Job) {
     if (job.operation === 'publish') {
       const { channel, message } = job.data
-      const url = `https://ps.pndsn.com/publish/${job.keyset.publishKey}/${
-        job.keyset.subscribeKey
-      }/0/${channel}/0/${encodeURIComponent(JSON.stringify(message))}`
+      const path = `/publish/${job.keyset.publishKey}/${job.keyset.subscribeKey}/0/${channel}/0/${encodeURIComponent(
+        JSON.stringify(message)
+      )}`
 
       job.data = {
-        url: url,
+        protocol: 'http:',
+        host: 'ps.pndsn.com',
+        path: path,
         method: 'GET',
-        headers: {},
       }
     }
   }
