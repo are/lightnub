@@ -1,7 +1,10 @@
+import shallowequal from 'shallowequal'
+
+import type { Module, ModuleInterfaceType, KnownModuleInterfaces } from './Module'
+
 import { version } from '../package.json'
 
-export type PluginPriority = 'lowest' | 'low' | 'normal' | 'high' | 'highest'
-
+export * from './Module'
 export interface Keyset {
   subscribeKey: string
   uuid: string
@@ -9,70 +12,43 @@ export interface Keyset {
   publishKey?: string
 }
 
-export interface Job<I = any, O = any> {
-  id: number
-  operation: string
-  keyset: Keyset
-  data: I
-  isDone: boolean
-  callback: (error: Error | undefined, result: O) => void
-}
+export type CoreType = { new (...args: any[]): Core }
+class Core {
+  static version = version
 
-export interface Instance {
-  [key: string]: any
+  private modules: Module<ModuleInterfaceType>[] = []
 
-  __decorate(name: string, fn: Function): void
-  __run(job: Partial<Job>): void
-}
+  protected registerModule(module: Module<ModuleInterfaceType>) {
+    this.modules.push(module)
 
-export interface Plugin {
-  name: string
-  version: string
-  priority: PluginPriority
-
-  initialize(_instance: Instance): void
-
-  onJobCreated(_job: Job): void
-  onJobStarted(_job: Job): void
-  onJobFinished(_job: Job): void
-}
-
-export default class LightNub implements Instance {
-  [key: string]: any
-
-  static __version: string = version
-
-  private readonly __plugins: any[]
-
-  private __hook(name: string, arg: any) {
-    for (const plugin of this.__plugins) {
-      plugin[name](arg)
-    }
+    module.initialize?.(this)
   }
 
-  constructor(plugins: Plugin[]) {
-    this.__plugins = plugins
+  protected get<I, T extends ModuleInterfaceType>(type: T, filter?: Record<string, any>): KnownModuleInterfaces[T] {
+    const module = this.modules.find(
+      (module) =>
+        module.type === type &&
+        (module.filter === undefined || filter === undefined || shallowequal(module.filter, filter))
+    ) as Module<T>
 
-    this.__hook('initialize', this)
-  }
-
-  __decorate(name: string, fn: Function) {
-    this[name] = fn.bind(this)
-  }
-
-  private __jobCounter = 0
-  __run({ data, callback, keyset, operation }: Omit<Job, 'id' | 'isDone'>) {
-    const job: Job = {
-      id: this.__jobCounter++,
-      data,
-      callback,
-      keyset,
-      operation,
-      isDone: false,
+    if (!module) {
+      throw new Error(
+        `A ${type} module is missing that can fulfill following requirements: ${JSON.stringify(
+          filter
+        )}. Make sure to include this module during instantiation.`
+      )
     }
 
-    this.__hook('onJobCreated', job)
-    this.__hook('onJobStarted', job)
-    this.__hook('onJobFinished', job)
+    return module.get()
   }
 }
+
+export type { Core }
+
+// @ts-ignore
+export default function LightNub(...decorators) {
+  // @ts-ignore
+  return new decorators.reduceRight((klass, decorator) => decorator(klass), Core)()
+}
+
+LightNub.Core = Core

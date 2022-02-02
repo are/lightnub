@@ -1,0 +1,16 @@
+{
+  "name": "@lightnub/module-publish",
+  "version": "1.0.0",
+  "description": "LightNub dx plugin implementing publish",
+  "author": "Artur Wojciechowski <me@iama.re>",
+  "license": "MIT",
+  "main": "dist/module-publish.cjs.js",
+  "module": "dist/module-publish.esm.js",
+  "browser": "dist/module-publish.umd.js",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
