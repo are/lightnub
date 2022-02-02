@@ -31,10 +31,14 @@ export default function WithPublish<T extends CoreType>(klazz: T) {
       const encodedMessage = urlCodec.encode(jsonCodec.encode(message))
       const encodedChannel = urlCodec.encode(channel)
 
-      networking.request({
-        method: 'get',
-        path: `/publish/${keyset.publishKey}/${keyset.subscribeKey}/0/${encodedChannel}/0/${encodedMessage}`,
-      })
+      return networking
+        .request({
+          method: 'get',
+          path: `/publish/${keyset.publishKey}/${keyset.subscribeKey}/0/${encodedChannel}/0/${encodedMessage}`,
+        })
+        .then((response) => {
+          return jsonCodec.decode(response.body)
+        })
     }
   }
 }
