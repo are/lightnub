@@ -75,11 +75,10 @@ This module provides the basic publish functionality.
 ```js
 const LightNub = require('@lightnub/core')
 const Networking = require('@lightnub/default-networking')
-const Codecs = require('@lightnub/-efault-codecs')
+const Codecs = require('@lightnub/default-codecs')
 
 const pubnub = LightNub(
     Networking,
-    Promises,
     Codecs
 )
 
