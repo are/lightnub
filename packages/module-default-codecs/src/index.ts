@@ -1,4 +1,4 @@
-import type { CoreType, Module, Request, Response } from '@lightnub/core'
+import type { CoreType, Module } from '@lightnub/core'
 import { version } from '../package.json'
 
 class JsonCodec implements Module<'codec'> {
